@@ -136,10 +136,13 @@ class TicketsDataset:
         ]
 
     def get_train_targets(self):
-        return self.encoder
+        return self.encoder, self.decoder
 
     def get_validation_accounts(self):
         return self.validation_data_accounts
+
+    def get_accounts_targets(self):
+        return self.reasons_per_account["reason"].to_dict()
 
     def get_training_data_for_target(self, target):
         positive_tickets = self.ticket_ids_per_reason[target]

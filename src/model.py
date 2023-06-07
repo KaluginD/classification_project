@@ -1,6 +1,9 @@
+from typing import List, Dict, Optional
+
 import numpy as np
 from tqdm import tqdm
 from joblib import dump, load
+import json
 import logging
 
 from sklearn import svm
@@ -17,15 +20,18 @@ TEST_PART = 1.0 / 11.0
 
 
 class ContactReasonPredictionModel:
-    def __init__(self, base_model=svm.SVC, model_args=[], model_kwargs={}):
+    def __init__(
+        self, base_model=svm.SVC, model_args: List = [], model_kwargs: Dict = {}
+    ):
         self.base_model = base_model
         self.model_args = model_args
         self.model_kwargs = model_kwargs
         self.models = []
         self.target_classification_reports = {}
 
-    def train(self, dataset: TicketsDataset, random_state: int = None):
-        self.targets = dataset.get_train_targets()
+    def train(self, dataset: TicketsDataset, random_state: Optional[int] = None):
+        self.targets, self.targets_decoder = dataset.get_train_targets()
+        self.account_targets = dataset.get_accounts_targets()
 
         logger.info(f"Training model for {len(self.targets)} targets...")
 
@@ -78,6 +84,28 @@ class ContactReasonPredictionModel:
             )
             reports[account] = account_report
         return aggregate_metrics(reports)
+
+    def forward(self, account_id: int, email_sentence_embeddings: str):
+        account_id = str(account_id)
+        if isinstance(email_sentence_embeddings, str):
+            email_sentence_embeddings = json.loads(email_sentence_embeddings)
+        if isinstance(email_sentence_embeddings, dict):
+            email_sentence_embeddings = list(email_sentence_embeddings.values())
+        if isinstance(email_sentence_embeddings, list):
+            email_sentence_embeddings = np.array(email_sentence_embeddings)
+        predictions = [
+            self.models[target].predict(email_sentence_embeddings)[0]
+            for target in self.account_targets[account_id]
+        ]
+        predicted_reasons = []
+        for prediction, reason in zip(predictions, self.account_targets[account_id]):
+            if prediction == 1:
+                predicted_reasons.append(self.targets_decoder[reason])
+        if len(predicted_reasons) == 0:
+            reason = "None"
+        else:
+            reason = "::".join(predicted_reasons)
+        return reason
 
     def save(self, path: str):
         dump((self.models, self.targets), path)

@@ -1,9 +1,14 @@
 import numpy as np
+import yaml
 
 
 METRICS = ["precision", "recall", "f1-score"]
 SUPPORT = "support"
 KEY_RESULT = "weighted avg"
+
+
+def metrics_pretty_print(result):
+    return yaml.dump(result, default_flow_style=False)
 
 
 def aggregate_metrics(reports):
@@ -15,7 +20,9 @@ def aggregate_metrics(reports):
         for key in METRICS + [SUPPORT]
     }
     aggregated_metrics = {
-        key: np.average(key_result_metrics[key], weights=key_result_metrics[SUPPORT])
+        key: float(
+            np.average(key_result_metrics[key], weights=key_result_metrics[SUPPORT])
+        )
         for key in METRICS
     }
     return aggregated_metrics, reports_key_results

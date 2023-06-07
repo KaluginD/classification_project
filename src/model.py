@@ -44,7 +44,9 @@ class ContactReasonPredictionModel:
             self.models.append(target_model)
 
             y_pred = target_model.predict(X_test)
-            report = classification_report(y_test, y_pred, output_dict=True)
+            report = classification_report(
+                y_test, y_pred, output_dict=True, zero_division=0
+            )
             self.target_classification_reports[target_name] = report
         return aggregate_metrics(self.target_classification_reports)
 

@@ -29,7 +29,7 @@ def main(
     )
     logger.info(
         "Validation results per account, multiclass classification:\n"
-        + {metrics_pretty_print(account_results)}
+        + metrics_pretty_print(account_results)
     )
 
     if path_to_save:

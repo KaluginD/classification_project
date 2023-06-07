@@ -108,7 +108,12 @@ class ContactReasonPredictionModel:
         return reason
 
     def save(self, path: str):
-        dump((self.models, self.targets), path)
+        dump(
+            (self.models, self.targets, self.targets_decoder, self.account_targets),
+            path,
+        )
 
     def load(self, path: str):
-        self.models, self.targets = load(path)
+        self.models, self.targets, self.targets_decoder, self.account_targets = load(
+            path
+        )

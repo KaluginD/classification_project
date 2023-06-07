@@ -8,6 +8,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import classification_report
 
 from src.dataset import TicketsDataset
+from src.metrics import aggregate_metrics
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger("Contact Reason Prediction Model")
@@ -21,15 +22,15 @@ class ContactReasonPredictionModel:
         self.model_args = model_args
         self.model_kwargs = model_kwargs
         self.models = []
-        self.target_classification_reports = []
+        self.target_classification_reports = {}
 
     def train(self, dataset: TicketsDataset, random_state: int = None):
         self.targets = dataset.get_train_targets()
 
         logger.info(f"Training model for {len(self.targets)} targets...")
 
-        for target in tqdm(self.targets.values()):
-            X_target, y_target = dataset.get_training_data_for_target(target)
+        for target_name, target_idx in tqdm(self.targets.items()):
+            X_target, y_target = dataset.get_training_data_for_target(target_idx)
             X_train, X_test, y_train, y_test = train_test_split(
                 X_target,
                 y_target,
@@ -44,8 +45,8 @@ class ContactReasonPredictionModel:
 
             y_pred = target_model.predict(X_test)
             report = classification_report(y_test, y_pred, output_dict=True)
-            self.target_classification_reports.append(report)
-        return self.target_classification_reports
+            self.target_classification_reports[target_name] = report
+        return aggregate_metrics(self.target_classification_reports)
 
     def validate(self, dataset: TicketsDataset):
         validation_accounts = dataset.get_validation_accounts()
@@ -74,7 +75,7 @@ class ContactReasonPredictionModel:
                 zero_division=0,
             )
             reports[account] = account_report
-        return reports
+        return aggregate_metrics(reports)
 
     def save(self, path: str):
         dump((self.models, self.targets), path)

@@ -8,21 +8,27 @@ from tqdm import tqdm
 from src.ticket_messages import TicketMessage
 from src.preprocessing import CONTACT_REASON_TO_LIST
 
+logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger("Tickets Dataset")
+
+VALIDATION_PART = 1.0 / 12.0
 
 
 class TicketsDataset:
-    def __init__(self, path, shuffle=True):
+    def __init__(self, path, shuffle=False):
         self.dataset = pd.read_parquet(path)
         self.shuffle = shuffle
 
         self._prepare_dataset()
         self._prepare_ticket_per_reason_dataset_and_encoder()
-        self._prepare_tickets_per_person()
+        self._aggregate_tickets_per_reason()
 
-        self._prepare_train_validation_data()
+        self._prepare_validation_data()
+        self._prepare_train_data()
 
     def _prepare_dataset(self):
+        logger.info("Processing contact reasons and embeddings...")
+
         self.ticket_message_list = TicketMessage.from_dataframe(dataframe=self.dataset)
         self.dataset["reasons"] = self.dataset["contact_reason"].apply(
             CONTACT_REASON_TO_LIST
@@ -36,6 +42,10 @@ class TicketsDataset:
         )
 
     def _prepare_ticket_per_reason_dataset_and_encoder(self):
+        logger.info(
+            "Flattering tickets per contact reason and aggregating reasons per account..."
+        )
+
         self.ticket_per_reason = self.dataset[
             ["account_id", "ticket_id", "reasons", "mean_emb"]
         ].loc[self.dataset.index.repeat(self.dataset["reasons"].apply(len))]
@@ -43,11 +53,14 @@ class TicketsDataset:
             itertools.chain.from_iterable(self.dataset["reasons"].values)
         )
         self.ticket_per_reason.drop("reasons", axis=1, inplace=True)
+
         self.encoder = {
             key: i
             for i, key in enumerate(self.ticket_per_reason["reason_str"].unique())
         }
-        self.num_reasons = len(self.ticket_per_reason["reason_str"].unique())
+        self.decoder = {encoded: name for name, encoded in self.encoder.items()}
+
+        self.num_reasons = len(self.encoder)
         self.ticket_per_reason["reason"] = self.ticket_per_reason["reason_str"].apply(
             lambda i: self.encoder[i]
         )
@@ -57,22 +70,26 @@ class TicketsDataset:
             .agg(lambda i: sorted(list(set(list(i)))))
         )
 
-    def _prepare_tickets_per_person(self):
+    def _aggregate_tickets_per_reason(self):
+        logger.info("Aggregating tickets per contact reason...")
+
         self.all_tickets = self.ticket_per_reason["ticket_id"].unique()
         self.all_ticket_ids_per_reason = [
             self.ticket_per_reason[
                 self.ticket_per_reason["reason"] == i
             ].ticket_id.unique()
-            for i in range(self.num_reasons)
+            for i in tqdm(range(self.num_reasons))
         ]
 
-    def _prepare_train_validation_data(self):
+    def _prepare_validation_data(self):
+        logger.info("Preparing validation data per account_id...")
+
         self.ticket_ids_per_reason, self.validation_ticket_ids_per_reason = [], []
         for curr_reason in self.all_ticket_ids_per_reason:
             if self.shuffle:
                 np.random.shuffle(curr_reason)
             reason_len = len(curr_reason)
-            split_point = int(reason_len / 12 * 11)
+            split_point = int(reason_len * (1 - VALIDATION_PART))
             self.ticket_ids_per_reason.append(curr_reason[:split_point])
             self.validation_ticket_ids_per_reason.append(curr_reason[split_point:])
         self.validation_data_tickets = np.unique(
@@ -86,10 +103,10 @@ class TicketsDataset:
         self.validation_data_per_account = {
             account_id: self.validation_data[
                 self.validation_data["account_id"] == account_id
-            ]
+            ].copy(deep=True)
             for account_id in self.validation_data_accounts
         }
-        for account in self.validation_data_accounts:
+        for account in tqdm(self.validation_data_accounts):
             account_reasons = self.reasons_per_account.loc[account]["reason"]
 
             self.validation_data_per_account[account][
@@ -105,6 +122,9 @@ class TicketsDataset:
                 ]
             )
 
+    def _prepare_train_data(self):
+        logger.info("Preparing training data per contact reason...")
+
         self.train_test_data = self.dataset[
             ~self.dataset["ticket_id"].isin(self.validation_data_tickets)
         ]
@@ -116,7 +136,7 @@ class TicketsDataset:
         ]
 
     def get_train_targets(self):
-        return list(range(self.num_reasons))
+        return self.encoder
 
     def get_validation_accounts(self):
         return self.validation_data_accounts
@@ -142,7 +162,9 @@ class TicketsDataset:
 
     def get_validation_data_for_account(self, account):
         account = str(account)
+        account_targets = self.reasons_per_account.loc[account]["reason"]
+        targets_names = [self.decoder[target] for target in account_targets]
         validation_data = self.validation_data_per_account[account].copy(deep=True)
         X_val = np.stack(validation_data["mean_emb"].values)
         y_val = np.stack(validation_data["one_hot_reasons"].values)
-        return X_val, y_val
+        return X_val, y_val, account_targets, targets_names

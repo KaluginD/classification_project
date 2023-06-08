@@ -39,11 +39,14 @@ def main(
 
     dataset = TicketsDataset(data_path)
     model = ContactReasonPredictionModel()
-    aggregated_test_metrics, _ = model.train(dataset)
+    aggregated_test_metrics, contact_reason_results = model.train(dataset)
     logger.info(
         "Training results aggregated per contact_reason, binary classification:\n"
         + metrics_pretty_print(aggregated_test_metrics)
     )
+    with open("results/training.log", "w") as training_log:
+        print(metrics_pretty_print(aggregated_test_metrics), file=training_log)
+        print(metrics_pretty_print(contact_reason_results), file=training_log)
     aggregated_val_metrics, account_results = model.validate(dataset)
     logger.info(
         "Validation results aggregated per acoount_id, multiclass classification:\n"
@@ -53,6 +56,9 @@ def main(
         "Validation results per account, multiclass classification:\n"
         + metrics_pretty_print(account_results)
     )
+    with open("results/validation.log", "w") as validation_log:
+        print(metrics_pretty_print(aggregated_val_metrics), file=validation_log)
+        print(metrics_pretty_print(account_results), file=validation_log)
 
     if path_to_save:
         model.save(path_to_save)

@@ -22,6 +22,28 @@ def preprocess_dataset(
     dataset_path: str = DEFAULT_DATASET_PATH,
     path_to_save: str = DEFAULT_PATH_TO_SAVE,
 ):
+    """
+    Preporcess dataset:
+        - removes samples with empty email_sentence_embeddings field
+        - preprocess contact reasons:
+            * casts to lower case
+            * removes double brackets
+            * splits by '::' separator
+            * removes whitespaces in the beggining and in the end
+        - removes contact reasons with less then CONTACT_REASON_MIN_TICKET_NUMBER tickets
+        - adds email length column
+        - removes samples with emails longer then EMAIL_MAX_LEN sentences
+
+    Parameters:
+        - dataset_path (str) : path to inital dataset file
+        - path_to_save (str) : path to save processed dataset
+
+    Returns:
+        None
+
+    How to run:
+    > python src/preprocessing.py
+    """
     dataset = pd.read_parquet(dataset_path)
     dataset_not_na_email = dataset[~dataset["email_sentence_embeddings"].isna()]
 

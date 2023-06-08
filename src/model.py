@@ -19,6 +19,37 @@ TEST_PART = 1.0 / 11.0
 
 
 class ContactReasonPredictionModel:
+    """
+    ContactReasonPrediction Model.
+
+    For each contact reason the model trains a base_model classifier for binary classification problem.
+    The model stores information about what contact reasons every account has.
+    During inference the model uses base_models for all contact reasons associated with a given account,
+    therefore solving multiclass classification problem.
+
+    Methods
+    -------
+    train(dataset, random_state)
+        Stores all contact reasons present in the dataset.
+        For each reason trains base_model classifier.
+        Evalutes model's performance on test split of data.
+        Returns evaluation results for all contact reasons.
+
+    validate(dataset)
+        Evaluates model's performace for each account.
+        For each account the base_models trained to predict the account's contact reasons are used.
+
+    forward(account_id, email_sentence_embeddings)
+        Takes input in the format from inital dataset and generates prediction.
+        If no contact reason was detected, returns string "None".
+
+    save(path)
+        Saves the model at provided location.
+
+    load(path)
+        Loads the model from provided location.
+    """
+
     def __init__(
         self, base_model=svm.SVC, model_args: List = [], model_kwargs: Dict = {}
     ):

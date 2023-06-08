@@ -16,6 +16,32 @@ VALIDATION_PART = 1.0 / 12.0
 
 
 class TicketsDataset:
+    """
+    Dataset of tickets.
+
+    Provides training and testing datasets for each contact reason.
+    Provides validation dataset for each account_id.
+
+    Methods
+    -------
+    get_train_targets()
+        returns dataset encoder and decoder for contact reasons
+
+    get_validation_accounts()
+        returns list of account_ids on which a model can be validated
+
+    get_accounts_targets()
+        returns a dictionary of contact reasons indeces processed by each account
+
+    get_training_data_for_target(target)
+        returns training dataset for binary classification task:
+        features and labels for given contact reason index
+
+    get_validation_data_for_account(account)
+        return evaluation dataset for multiclass classification:
+        tickets of given account to be used to predict contact reason
+    """
+
     def __init__(self, path, shuffle=False):
         self.dataset = pd.read_parquet(path)
         self.shuffle = shuffle

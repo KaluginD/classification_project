@@ -1,14 +1,13 @@
-from typing import List, Dict, Optional
-
-import numpy as np
-from tqdm import tqdm
-from joblib import dump, load
 import json
 import logging
+from typing import Dict, List, Optional
 
+import numpy as np
+from joblib import dump, load
 from sklearn import svm
-from sklearn.model_selection import train_test_split
 from sklearn.metrics import classification_report
+from sklearn.model_selection import train_test_split
+from tqdm import tqdm
 
 from src.dataset import TicketsDataset
 from src.metrics import aggregate_metrics

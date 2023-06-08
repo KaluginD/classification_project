@@ -1,10 +1,10 @@
 import itertools
-import typer
 import logging
 
-from sklearn.svm import SVC
-from sklearn.linear_model import LogisticRegression
+import typer
 from sklearn.ensemble import RandomForestClassifier
+from sklearn.linear_model import LogisticRegression
+from sklearn.svm import SVC
 
 from src.dataset import TicketsDataset
 from src.model import ContactReasonPredictionModel

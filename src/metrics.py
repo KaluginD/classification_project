@@ -1,7 +1,6 @@
 import numpy as np
 import yaml
 
-
 METRICS = ["precision", "recall", "f1-score"]
 SUPPORT = "support"
 KEY_RESULT = "weighted avg"

@@ -1,9 +1,10 @@
-import typer
 import logging
 
+import typer
+
 from src.dataset import TicketsDataset
-from src.model import ContactReasonPredictionModel
 from src.metrics import metrics_pretty_print
+from src.model import ContactReasonPredictionModel
 
 DEFAULT_DATA_PATH = "data/classification_dataset_filtered"
 DEFAULT_MODEL_PATH = "data/models/model.joblib"

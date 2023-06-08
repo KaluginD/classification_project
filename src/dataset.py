@@ -1,12 +1,13 @@
 import itertools
+import json
 import logging
 
-import pandas as pd
-import json
 import numpy as np
+import pandas as pd
 from tqdm import tqdm
-from src.ticket_messages import TicketMessage
+
 from src.preprocessing import CONTACT_REASON_TO_LIST
+from src.ticket_messages import TicketMessage
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger("Tickets Dataset")

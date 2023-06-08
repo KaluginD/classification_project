@@ -6,6 +6,7 @@ from src.model import ContactReasonPredictionModel
 from src.metrics import metrics_pretty_print
 
 DEFAULT_DATA_PATH = "data/classification_dataset_filtered"
+DEFAULT_MODEL_PATH = "data/models/model.joblib"
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger("Model training and evaluation")
@@ -13,7 +14,7 @@ logger = logging.getLogger("Model training and evaluation")
 
 def main(
     data_path: str = DEFAULT_DATA_PATH,
-    path_to_save: str = None,
+    path_to_save: str = DEFAULT_MODEL_PATH,
 ):
     dataset = TicketsDataset(data_path)
     model = ContactReasonPredictionModel()

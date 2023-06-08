@@ -6,6 +6,8 @@ import typer
 
 from src.ticket_messages import TicketMessage
 
+DEFAULT_DATASET_PATH = "data/classification_dataset"
+DEFAULT_PATH_TO_SAVE = "data/classification_dataset_filtered"
 
 CONTACT_REASON_TO_LIST = lambda line: [
     i.strip() for i in line.lower().replace('"', "").split("::")
@@ -17,8 +19,8 @@ EMAIL_MAX_LEN = 5
 
 
 def preprocess_dataset(
-    dataset_path: str,
-    path_to_save: str,
+    dataset_path: str = DEFAULT_DATASET_PATH,
+    path_to_save: str = DEFAULT_PATH_TO_SAVE,
 ):
     dataset = pd.read_parquet(dataset_path)
     dataset_not_na_email = dataset[~dataset["email_sentence_embeddings"].isna()]

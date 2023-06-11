@@ -54,7 +54,7 @@ def preprocess_dataset(
 
     rows_per_reason = dataset_reasons.loc[
         dataset_reasons.index.repeat(dataset_reasons["contact_reason"].apply(len))
-    ].drop("ticket_num_reasons", axis=1)
+    ]
     rows_per_reason["contact_reason"] = list(
         itertools.chain.from_iterable(dataset_reasons["contact_reason"].values)
     )

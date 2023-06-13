@@ -1,0 +1,425 @@
+f1-score: 0.4906053355965252
+precision: 0.5162723923726369
+recall: 0.5158924205378973
+
+account access:
+  f1-score: 0.16408668730650156
+  precision: 0.16249999999999998
+  recall: 0.16666666666666666
+  support: 18
+add promo:
+  f1-score: 0.9372549019607843
+  precision: 0.9444444444444444
+  recall: 0.9375
+  support: 16
+address change request:
+  f1-score: 0.30769230769230765
+  precision: 0.31135531135531136
+  recall: 0.3076923076923077
+  support: 13
+adverse reaction:
+  f1-score: 0.5888888888888888
+  precision: 0.6
+  recall: 0.6
+  support: 15
+arrived at warehouse:
+  f1-score: 0.8823529411764706
+  precision: 0.8823529411764706
+  recall: 0.8823529411764706
+  support: 17
+biz:
+  f1-score: 0.8285714285714286
+  precision: 0.875
+  recall: 0.8333333333333334
+  support: 6
+blogger:
+  f1-score: 1.0
+  precision: 1.0
+  recall: 1.0
+  support: 13
+bolt upgrade program:
+  f1-score: 0.0
+  precision: 0.0
+  recall: 0.0
+  support: 16.0
+bulk:
+  f1-score: 0.6929541047188107
+  precision: 0.7294117647058824
+  recall: 0.7058823529411765
+  support: 17
+catch:
+  f1-score: 0.16475972540045766
+  precision: 0.13533834586466165
+  recall: 0.21052631578947367
+  support: 19
+change to order:
+  f1-score: 0.5636363636363637
+  precision: 0.7857142857142857
+  recall: 0.625
+  support: 16
+changed mind:
+  f1-score: 0.45574162679425845
+  precision: 0.4817813765182186
+  recall: 0.47368421052631576
+  support: 19
+chargeback:
+  f1-score: 0.07692307692307691
+  precision: 0.07142857142857142
+  recall: 0.08333333333333333
+  support: 12
+claim:
+  f1-score: 0.2216117216117216
+  precision: 0.22307692307692312
+  recall: 0.23076923076923078
+  support: 13
+compatibility:
+  f1-score: 0.125
+  precision: 0.125
+  recall: 0.125
+  support: 16
+complaint:
+  f1-score: 0.7185185185185186
+  precision: 0.8303030303030302
+  recall: 0.7333333333333333
+  support: 15
+'core issue: stock':
+  f1-score: 0.6807692307692308
+  precision: 0.7051282051282051
+  recall: 0.6923076923076923
+  support: 13
+coupon / discount:
+  f1-score: 0.3333333333333333
+  precision: 0.25
+  recall: 0.5
+  support: 16
+coupons:
+  f1-score: 0.8403846153846154
+  precision: 0.8803418803418803
+  recall: 0.8461538461538461
+  support: 13
+damage/defective:
+  f1-score: 0.9333333333333333
+  precision: 0.9416666666666667
+  recall: 0.9333333333333333
+  support: 15
+damaged order:
+  f1-score: 0.09999999999999999
+  precision: 0.09090909090909091
+  recall: 0.1111111111111111
+  support: 18
+delayed refund:
+  f1-score: 0.06666666666666667
+  precision: 0.0625
+  recall: 0.07142857142857142
+  support: 14
+delayed shipping - order in transit:
+  f1-score: 0.5465587044534412
+  precision: 0.5727272727272728
+  recall: 0.5625
+  support: 16
+delivered with issues - item(s) missing from order:
+  f1-score: 0.1843137254901961
+  precision: 0.18253968253968253
+  recall: 0.1875
+  support: 16
+disconnect(s):
+  f1-score: 0.4666666666666667
+  precision: 0.4666666666666667
+  recall: 0.4666666666666667
+  support: 15
+edit/add to:
+  f1-score: 0.17307692307692304
+  precision: 0.13846153846153844
+  recall: 0.23076923076923078
+  support: 13
+error code:
+  f1-score: 0.29696969696969694
+  precision: 0.21777777777777776
+  recall: 0.4666666666666667
+  support: 15
+exchange policy:
+  f1-score: 0.5211538461538463
+  precision: 0.5299145299145299
+  recall: 0.5384615384615384
+  support: 13
+fedex/usps/canada post:
+  f1-score: 0.26666666666666666
+  precision: 0.22222222222222224
+  recall: 0.3333333333333333
+  support: 15
+feedback and complaints:
+  f1-score: 0.9372549019607843
+  precision: 0.9444444444444444
+  recall: 0.9375
+  support: 16
+found:
+  f1-score: 0.06666666666666667
+  precision: 0.0625
+  recall: 0.07142857142857142
+  support: 14
+friendly feedback:
+  f1-score: 0.6137566137566138
+  precision: 0.7948717948717949
+  recall: 0.6666666666666666
+  support: 15
+full refund:
+  f1-score: 0.6666666666666666
+  precision: 0.6726190476190477
+  recall: 0.6666666666666666
+  support: 15
+'general issue: other':
+  f1-score: 0.437037037037037
+  precision: 0.47878787878787876
+  recall: 0.4666666666666667
+  support: 15
+general questions/other:
+  f1-score: 0.0
+  precision: 0.0
+  recall: 0.0
+  support: 13.0
+haven't started:
+  f1-score: 0.8285714285714286
+  precision: 0.875
+  recall: 0.8333333333333334
+  support: 18
+hlf:
+  f1-score: 0.0
+  precision: 0.0
+  recall: 0.0
+  support: 13.0
+how to take:
+  f1-score: 0.3650793650793651
+  precision: 0.3666666666666667
+  recall: 0.375
+  support: 16
+inquiry/request:
+  f1-score: 0.291497975708502
+  precision: 0.21301775147928995
+  recall: 0.46153846153846156
+  support: 13
+installation:
+  f1-score: 0.46153846153846156
+  precision: 0.46703296703296704
+  recall: 0.46153846153846156
+  support: 13
+it ticket:
+  f1-score: 1.0
+  precision: 1.0
+  recall: 1.0
+  support: 16
+jml email:
+  f1-score: 0.7132867132867133
+  precision: 0.8295454545454546
+  recall: 0.7272727272727273
+  support: 11
+missing item from order:
+  f1-score: 0.5151515151515151
+  precision: 0.6025641025641025
+  recall: 0.5625
+  support: 16
+missing items:
+  f1-score: 0.15384615384615383
+  precision: 0.15567765567765568
+  recall: 0.15384615384615385
+  support: 13
+not shipped:
+  f1-score: 0.4181818181818182
+  precision: 0.5
+  recall: 0.5
+  support: 16
+order lost in transit:
+  f1-score: 0.7885167464114833
+  precision: 0.8545454545454546
+  recall: 0.8
+  support: 15
+order management:
+  f1-score: 0.9282051282051282
+  precision: 0.9375
+  recall: 0.9285714285714286
+  support: 14
+order processing update:
+  f1-score: 0.25
+  precision: 0.20000000000000004
+  recall: 0.3333333333333333
+  support: 12
+order returned - rts:
+  f1-score: 0.5384615384615384
+  precision: 0.5384615384615384
+  recall: 0.5384615384615384
+  support: 13
+order returned to sender:
+  f1-score: 0.7777777777777778
+  precision: 0.7777777777777778
+  recall: 0.7777777777777778
+  support: 18
+order-issue:
+  f1-score: 0.3043478260869565
+  precision: 0.23333333333333334
+  recall: 0.4375
+  support: 16
+packer damage:
+  f1-score: 0.746031746031746
+  precision: 0.7666666666666666
+  recall: 0.75
+  support: 16
+payment:
+  f1-score: 0.2991452991452992
+  precision: 0.24475524475524474
+  recall: 0.38461538461538464
+  support: 13
+payment support:
+  f1-score: 0.7482517482517482
+  precision: 0.7571428571428571
+  recall: 0.75
+  support: 12
+points / promotion:
+  f1-score: 0.06593406593406594
+  precision: 0.057692307692307696
+  recall: 0.07692307692307693
+  support: 13
+positive review:
+  f1-score: 0.7511312217194571
+  precision: 0.8384615384615384
+  recall: 0.7692307692307693
+  support: 13
+pr team. 17c.:
+  f1-score: 0.4759358288770053
+  precision: 0.5
+  recall: 0.5
+  support: 14
+product arrived damaged:
+  f1-score: 0.5045454545454545
+  precision: 0.7714285714285715
+  recall: 0.6
+  support: 15
+product operation:
+  f1-score: 0.2
+  precision: 0.2
+  recall: 0.2
+  support: 15
+product problem:
+  f1-score: 0.14285714285714285
+  precision: 0.14285714285714285
+  recall: 0.14285714285714285
+  support: 14
+product query:
+  f1-score: 0.5324675324675324
+  precision: 0.5692307692307692
+  recall: 0.5555555555555556
+  support: 18
+production:
+  f1-score: 0.5465587044534412
+  precision: 0.5727272727272728
+  recall: 0.5625
+  support: 16
+promo codes/discounts:
+  f1-score: 0.23809523809523808
+  precision: 0.23333333333333334
+  recall: 0.25
+  support: 16
+return to sender:
+  f1-score: 0.6190476190476191
+  precision: 0.6333333333333333
+  recall: 0.625
+  support: 16
+rewards >> how to redeem:
+  f1-score: 0.3333333333333333
+  precision: 0.33333333333333337
+  recall: 0.375
+  support: 16
+route:
+  f1-score: 0.9230769230769231
+  precision: 0.9340659340659341
+  recall: 0.9230769230769231
+  support: 13
+same day:
+  f1-score: 1.0
+  precision: 1.0
+  recall: 1.0
+  support: 13
+shipping problem:
+  f1-score: 0.25339366515837103
+  precision: 0.2153846153846154
+  recall: 0.3076923076923077
+  support: 13
+shipping times:
+  f1-score: 0.2467571644042232
+  precision: 0.24666666666666667
+  recall: 0.26666666666666666
+  support: 15
+shopping- payment card issues:
+  f1-score: 0.8507936507936508
+  precision: 0.8857142857142858
+  recall: 0.8571428571428571
+  support: 7
+size/fit help:
+  f1-score: 0.0
+  precision: 0.0
+  recall: 0.0
+  support: 15.0
+social:
+  f1-score: 0.5906432748538012
+  precision: 0.7916666666666667
+  recall: 0.6428571428571429
+  support: 14
+social media:
+  f1-score: 1.0
+  precision: 1.0
+  recall: 1.0
+  support: 14
+spam/solicitation:
+  f1-score: 0.5636363636363637
+  precision: 0.7857142857142857
+  recall: 0.625
+  support: 16
+trademe:
+  f1-score: 0.898989898989899
+  precision: 0.9166666666666667
+  recall: 0.9
+  support: 10
+troubleshooting:
+  f1-score: 0.5045454545454545
+  precision: 0.7714285714285715
+  recall: 0.6
+  support: 15
+unsubscribe:
+  f1-score: 0.23809523809523808
+  precision: 0.23333333333333334
+  recall: 0.25
+  support: 16
+unsubscribe email & text:
+  f1-score: 0.5555555555555556
+  precision: 0.5555555555555556
+  recall: 0.5555555555555556
+  support: 18
+urinary history:
+  f1-score: 0.8571428571428571
+  precision: 0.8571428571428571
+  recall: 0.8571428571428571
+  support: 14
+vendor paperwork:
+  f1-score: 0.2447552447552447
+  precision: 0.24285714285714288
+  recall: 0.25
+  support: 12
+where's my refund:
+  f1-score: 0.836613272311213
+  precision: 0.8785425101214576
+  recall: 0.8421052631578947
+  support: 19
+wholesale enquiry:
+  f1-score: 0.49579831932773105
+  precision: 0.7727272727272728
+  recall: 0.5833333333333334
+  support: 12
+womens:
+  f1-score: 1.0
+  precision: 1.0
+  recall: 1.0
+  support: 13
+xb:
+  f1-score: 0.1707516339869281
+  precision: 0.16974789915966387
+  recall: 0.17647058823529413
+  support: 17
+

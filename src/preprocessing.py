@@ -15,12 +15,15 @@ CONTACT_REASON_TO_LIST = lambda line: [
 CONTACT_REASON_LIST_TO_STRING = lambda reasons: "::".join(reasons)
 
 CONTACT_REASON_MIN_TICKET_NUMBER = 120
+CONTACT_REASON_MAX_TICKET_NUMBER = 1000000
 EMAIL_MAX_LEN = 5
 
 
 def preprocess_dataset(
     dataset_path: str = DEFAULT_DATASET_PATH,
     path_to_save: str = DEFAULT_PATH_TO_SAVE,
+    min_samples: int = CONTACT_REASON_MIN_TICKET_NUMBER,
+    max_samples: int = CONTACT_REASON_MAX_TICKET_NUMBER,
 ):
     """
     Preporcess dataset:

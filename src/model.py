@@ -59,14 +59,21 @@ class ContactReasonPredictionModel:
         self.models = []
         self.target_classification_reports = {}
 
-    def train(self, dataset: TicketsDataset, random_state: Optional[int] = None):
+    def train(
+        self,
+        dataset: TicketsDataset,
+        data_rate: int = 4,
+        random_state: Optional[int] = None,
+    ):
         self.targets, self.targets_decoder = dataset.get_train_targets()
         self.account_targets = dataset.get_accounts_targets()
 
         logger.info(f"Training model for {len(self.targets)} targets...")
 
         for target_name, target_idx in tqdm(self.targets.items()):
-            X_target, y_target = dataset.get_training_data_for_target(target_idx)
+            X_target, y_target = dataset.get_training_data_for_target(
+                target_idx, neg_rate=data_rate
+            )
             X_train, X_test, y_train, y_test = train_test_split(
                 X_target,
                 y_target,

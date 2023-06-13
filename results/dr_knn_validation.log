@@ -1,0 +1,180 @@
+f1-score: 0.3779515880874152
+precision: 0.3793514551001755
+recall: 0.5513126491646778
+
+'12167':
+  f1-score: 0.37602053119294493
+  precision: 0.2654506080293187
+  recall: 0.6896551724137931
+  support: 29
+'21590':
+  f1-score: 0.08888888888888888
+  precision: 0.06666666666666667
+  recall: 0.13333333333333333
+  support: 15
+'23353':
+  f1-score: 0.25299502143086927
+  precision: 0.16660602938493405
+  recall: 0.5862068965517241
+  support: 29
+'23443':
+  f1-score: 1.0
+  precision: 1.0
+  recall: 1.0
+  support: 2
+'23777':
+  f1-score: 0.21510109809959888
+  precision: 0.14309704441283388
+  recall: 0.4594594594594595
+  support: 37
+'25489':
+  f1-score: 1.0
+  precision: 1.0
+  recall: 1.0
+  support: 5
+'25619':
+  f1-score: 0.7499999999999999
+  precision: 1.0
+  recall: 0.6
+  support: 5
+'29372':
+  f1-score: 0.619047619047619
+  precision: 0.4722222222222222
+  recall: 0.9
+  support: 10
+'31286':
+  f1-score: 0.0
+  precision: 0.0
+  recall: 0.0
+  support: 5.0
+'32849':
+  f1-score: 0.11123511904761904
+  precision: 0.08273809523809522
+  recall: 0.25
+  support: 16
+'34011':
+  f1-score: 0.5
+  precision: 1.0
+  recall: 0.3333333333333333
+  support: 3
+'37274':
+  f1-score: 0.46627716175227485
+  precision: 0.4408924408924409
+  recall: 0.7692307692307693
+  support: 26
+'37330':
+  f1-score: 1.0
+  precision: 1.0
+  recall: 1.0
+  support: 5
+'4453':
+  f1-score: 0.2857142857142857
+  precision: 1.0
+  recall: 0.16666666666666666
+  support: 6
+'47355':
+  f1-score: 0.2857142857142857
+  precision: 1.0
+  recall: 0.16666666666666666
+  support: 6
+'4767':
+  f1-score: 0.35463659147869675
+  precision: 0.34183673469387754
+  recall: 0.5
+  support: 14
+'49143':
+  f1-score: 0.7890671420083184
+  precision: 0.7520661157024794
+  recall: 0.9090909090909091
+  support: 11
+'50142':
+  f1-score: 0.5555555555555556
+  precision: 0.7777777777777778
+  recall: 0.4444444444444444
+  support: 9
+'50159':
+  f1-score: 0.2150158339197748
+  precision: 0.1499267399267399
+  recall: 0.4642857142857143
+  support: 28
+'60696':
+  f1-score: 0.0
+  precision: 0.0
+  recall: 0.0
+  support: 6
+'61061':
+  f1-score: 0.1800845988489009
+  precision: 0.11707674759654554
+  recall: 0.42105263157894735
+  support: 19
+'61067':
+  f1-score: 1.0
+  precision: 1.0
+  recall: 1.0
+  support: 1
+'62537':
+  f1-score: 0.8
+  precision: 0.7272727272727273
+  recall: 0.9090909090909091
+  support: 11
+'63432':
+  f1-score: 0.32222222222222224
+  precision: 0.3168498168498169
+  recall: 0.42857142857142855
+  support: 21
+'65210':
+  f1-score: 1.0
+  precision: 1.0
+  recall: 1.0
+  support: 4
+'68999':
+  f1-score: 0.6662428480610297
+  precision: 0.6147186147186147
+  recall: 0.7272727272727273
+  support: 11
+'70399':
+  f1-score: 1.0
+  precision: 1.0
+  recall: 1.0
+  support: 4
+'7263':
+  f1-score: 0.16666666666666666
+  precision: 0.125
+  recall: 0.25
+  support: 8
+'73381':
+  f1-score: 0.33333333333333337
+  precision: 1.0
+  recall: 0.2
+  support: 5
+'74620':
+  f1-score: 0.31654105792036824
+  precision: 0.20219987408892953
+  recall: 0.7586206896551724
+  support: 29
+'81813':
+  f1-score: 0.25
+  precision: 0.1835426478283621
+  recall: 0.47619047619047616
+  support: 21
+'8306':
+  f1-score: 1.0
+  precision: 1.0
+  recall: 1.0
+  support: 5
+'84484':
+  f1-score: 0.888888888888889
+  precision: 1.0
+  recall: 0.8
+  support: 5
+'89837':
+  f1-score: 0.4
+  precision: 1.0
+  recall: 0.25
+  support: 4
+'92372':
+  f1-score: 0.4
+  precision: 1.0
+  recall: 0.25
+  support: 4
+

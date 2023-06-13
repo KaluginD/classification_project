@@ -171,10 +171,10 @@ class TicketsDataset:
     def get_accounts_targets(self):
         return self.reasons_per_account["reason"].to_dict()
 
-    def get_training_data_for_target(self, target):
+    def get_training_data_for_target(self, target, neg_rate: int = 4):
         positive_tickets = self.ticket_ids_per_reason[target]
         negative_tickets = self.ticket_ids_neg_per_reason[target][
-            : len(positive_tickets) * 4
+            : len(positive_tickets) * neg_rate
         ]
 
         curr_reason_data = self.train_test_data[

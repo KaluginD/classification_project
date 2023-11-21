@@ -1,4 +1,4 @@
-# Gorgias Ticket Classification
+# Ticket Classification
 
 This repository contains a solution for automating the classification of merchant customer tickets based on their contact reasons. The goal is to develop a machine learning solution that can handle about 250K tickets daily with an expected response time of around 200ms.
 
